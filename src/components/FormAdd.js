@@ -86,7 +86,7 @@ function FormAdd() {
           <label htmlFor="image">Imagen</label>
           <input name="image" id="image" type="file" onChange={handleImage} />
         </div>
-        <button type="submit"></button>
+        <button type="submit">Agregar</button>
       </form>
     </div>
   );
