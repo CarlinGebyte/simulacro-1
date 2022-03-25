@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { url } from "../helpers/url";
+import { BodyCard, CardContain, CardItem, HeaderImgCard, ImgCard } from "../styles/Styles";
 
 function CardsContainer() {
   const [products, setProducts] = useState([]);
@@ -32,22 +33,27 @@ function CardsContainer() {
   };
 
   return (
-    <div>
+    <CardContain>
       {products.map((product) => {
         const { id, name, image, price, description } = product;
         return (
-          <Card key={id}>
-            <Card.Img variant="top" style={{ width: "20vw" }} src={image} />
-            <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Text>{price}</Card.Text>
+          <CardItem key={id}>
+            <HeaderImgCard>
+              <ImgCard variant="top" style={{ width: "20vw" }} src={image} />
+            </HeaderImgCard>
+            <BodyCard>
+              <Card.Title>
+                {name} <span>${price}</span>
+              </Card.Title>
               <Card.Text>{description}</Card.Text>
-              <Button onClick={() => deleteProduct(id)}>Eliminar</Button>
-            </Card.Body>
-          </Card>
+              <Button variant="warning" onClick={() => deleteProduct(id)}>
+                Eliminar
+              </Button>
+            </BodyCard>
+          </CardItem>
         );
       })}
-    </div>
+    </CardContain>
   );
 }
 

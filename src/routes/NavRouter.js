@@ -8,10 +8,11 @@ import {
 import CardsContainer from "../components/CardsContainer";
 import FormAdd from "../components/FormAdd";
 import Navbar from "../components/Navbar";
+import { ContainerAll } from "../styles/Styles";
 
 function NavRouter() {
   return (
-    <div>
+    <ContainerAll>
       <Router>
         <Navbar></Navbar>
         <Routes>
@@ -20,7 +21,7 @@ function NavRouter() {
           <Route path="/*" element={<Navigate to="/" />}></Route>
         </Routes>
       </Router>
-    </div>
+    </ContainerAll>
   );
 }
 
