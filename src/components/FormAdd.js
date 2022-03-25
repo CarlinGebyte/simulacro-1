@@ -4,13 +4,13 @@ import { UploadImage } from "../helpers/uploadImage";
 import { url } from "../helpers/url";
 
 function FormAdd() {
-  const initiaState = {
+  const initialState = {
     name: "",
     image: "",
     price: "",
     description: "",
   };
-  const [product, setProduct] = useState(initiaState);
+  const [product, setProduct] = useState(initialState);
 
   useEffect(() => {
     return () => {};
@@ -26,7 +26,7 @@ function FormAdd() {
       .catch((error) => {
         console.log(error);
       });
-    setProduct(initiaState);
+    setProduct(initialState);
   };
 
   const handleChanged = ({ target }) => {
@@ -39,14 +39,16 @@ function FormAdd() {
   const handleImage = (e) => {
     console.log("submiting image");
     const file = e.target.files[0];
-    UploadImage(file).then((result) => {
-      setProduct({
-        ...product,
-        imagen: result,
-      }).catch((error) => {
+    UploadImage(file)
+      .then((result) => {
+        setProduct({
+          ...product,
+          image: result,
+        });
+      })
+      .catch((error) => {
         console.log(error);
       });
-    });
   };
 
   return (
